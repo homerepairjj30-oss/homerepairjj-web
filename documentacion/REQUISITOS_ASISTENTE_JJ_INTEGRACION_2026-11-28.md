@@ -32,3 +32,16 @@
 
 ## Continuidad
 Incluir estos requisitos en el historial desde el origen; contrastar implementación con fuente Flutter 1.2.34+70 y las conversaciones/ZIP anteriores. Documento de requisitos, no confirmación de función implementada.
+
+
+## Envío elegido por voz y seguimiento comercial — petición del 28/11/2026
+- JJ debe ofrecer **correo electrónico o WhatsApp** al compartir un presupuesto o factura. Si José no ha indicado el canal, debe preguntárselo; si dice «envíaselo por WhatsApp» o «por correo», utilizar el elegido y mostrar destinatario/documento antes de enviarlo. Conservar la posibilidad de escoger ambos canales.
+- Después del envío, registrar en la ficha del documento el **canal**, fecha/hora, destinatario o referencia de contacto y resultado verificable del intento, evitando duplicar envíos por reintentos o instrucciones repetidas. No afirmar «enviado» si solo se ha abierto WhatsApp/correo con un mensaje preparado: confirmar cuando el canal o proveedor permita comprobarlo.
+- Cada presupuesto debe tener seguimiento: **borrador, pendiente de envío, enviado, pendiente de respuesta, aceptado, rechazado**; cuando proceda, caducado y convertido en factura. Mantener fecha de cambio, notas e historial de estados, y permitir corregir un estado manualmente.
+- Vista de resumen con **número de presupuestos creados, enviados, pendientes de respuesta, aceptados y rechazados**, importes por estado y tasa de aceptación con denominador claramente indicado; filtros por fechas, cliente, canal y estado. Un documento no se contará dos veces por reenvíos.
+- Alertas de seguimiento configurables: presupuestos enviados sin respuesta, próximo contacto, avisos para consultar al cliente; permitir al usuario reprogramarlos sin crear recordatorios duplicados.
+- Distinguir claramente **envío, entrega, apertura/lectura y aceptación**. Solo informar apertura o lectura si existe un mecanismo legítimo y verificable (por ejemplo, enlace de seguimiento autorizado y correctamente configurado); un mensaje preparado de WhatsApp o correo no garantiza ni entrega ni lectura. Aceptación/rechazo requieren confirmación documentada o registro manual.
+- Mostrar a José el estado en lenguaje normal y permitir consultas por voz como «JJ, ¿cuántos presupuestos he enviado este mes?», «¿cuántos me han aceptado?» y «¿cuáles siguen pendientes?».
+- En la web pública, el cliente podrá solicitar valoración o presupuesto por correo o WhatsApp; las cifras de seguimiento, los documentos y los datos personales de clientes solo se verán en el entorno privado y autenticado de José, no en páginas abiertas.
+
+**Estado real:** estos son requisitos acordados, NO funciones certificadas en esta sesión. Queda pendiente inspeccionar la implementación de Flutter y la maqueta web, ejecutar pruebas completas de ambos canales y verificar qué eventos de seguimiento están técnicamente disponibles.
