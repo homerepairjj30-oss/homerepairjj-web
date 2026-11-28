@@ -22,3 +22,14 @@ El cliente describe por sí mismo una reparación, cambio, reforma o pequeña ob
 
 ## Estado
 Definición funcional confirmada; **no** confundir con implementación o publicación terminada. La rama de pruebas tiene módulos de estimación previos pendientes de integración y revisión con tarifas publicables.
+
+
+## Estimación condicionada a visita técnica (confirmado por el propietario)
+- El cliente solo recibe un precio aproximado para el alcance **y las condiciones declaradas**. Deben indicarse claramente las hipótesis de cálculo.
+- Ejemplo: pintura blanca de vivienda de 80 m² con paredes en buen estado; cualquier cifra mostrada es ilustrativa hasta validar precios y mediciones.
+- Antes de calcular, consultar estado de superficies: buen estado, grietas/desconchados, humedad, moho o «no lo sé»; documentar otras condiciones según trabajo.
+- Al encontrar humedad, desprendimientos, irregularidades u otras patologías, **no incluir automáticamente una reparación desconocida** ni confirmar el precio base. Mostrar «Requiere visita y valoración técnica», e indicar que saneado, tratamiento, preparación, reparaciones y acabado pueden aumentar el presupuesto.
+- La visita presencial verifica estado real, dimensiones, accesos, posibles trabajos previos, materiales y condiciones de ejecución.
+- Tras la visita, el profesional puede recuperar la solicitud, registrar hallazgos, ajustar cantidades y añadir partidas de reparación con tarifas aprobadas; emitir **presupuesto definitivo para aceptación**. La web no lo convierte por sí sola en precio comprometido.
+- Mostrar al cliente algo como: «Estimación basada en los datos proporcionados y suponiendo superficies en buen estado. No incluye humedades, saneamientos ni reparaciones no descritas. El importe definitivo se confirmará tras la visita y evaluación de la obra».
+- No tratar «80 m² de vivienda» como «80 m² de pared»: calcular las superficies de pintura con medición o datos adicionales, sin inferencia falsa.
