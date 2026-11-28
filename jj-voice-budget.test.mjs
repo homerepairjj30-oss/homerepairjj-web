@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {voiceBudget} from './jj-voice-budget.mjs';
+const catalog={version:'v1',rates:[{id:'wc',label:'Cambiar váter',category:'Fontanería',unit:'ud',cents:9000,minutes:120,updatedAt:'2026-11-28',approved:true}]};
+const draft={lines:[{id:'wc',quantity:1}]};
+test('conservar explicación de trabajo',()=>assert.equal(voiceBudget('Tengo que cambiar un váter',null,catalog,21).status,'work_description'));
+test('orden por voz genera solo borrador',()=>{const r=voiceBudget('JJ, pásamelo a presupuesto',draft,catalog,21);assert.equal(r.status,'draft_ready_for_approval');assert.equal(r.result.total,10890)});
+test('sin partidas no inventa',()=>assert.equal(voiceBudget('hazme un presupuesto',null,catalog,21).status,'need_work_details'));
+test('sin tarifa aprobada bloquea',()=>assert.equal(voiceBudget('pásamelo a presupuesto',{lines:[{id:'desconocido',quantity:1}]},catalog,21).status,'review_required'));
+test('sin IVA validado bloquea',()=>assert.equal(voiceBudget('pásamelo a presupuesto',draft,catalog,null).status,'need_vat_validation'));
+test('descuento solicitado no se aplica',()=>assert.equal(voiceBudget('¿Puedo hacer un descuento?',draft,catalog,21).status,'discount_requested'));
