@@ -25,3 +25,17 @@ test('no inventar precio para trabajos no aprobados',()=>{
 test('no aceptar IVA sin determinar',()=>{
  assert.throws(()=>estimate([{id:'a',quantity:1}],adaptCatalog(snapshot,approvals),0));
 });
+
+test('descuento porcentual antes del IVA',()=>{
+ const r=estimate([{id:'a',quantity:2}],adaptCatalog(snapshot,approvals),21,{type:'percent',value:10});
+ assert.deepEqual([r.base,r.discountCents,r.taxableBase,r.tax,r.total],[6000,600,5400,1134,6534]);
+});
+test('descuento fijo antes del IVA',()=>{
+ const r=estimate([{id:'a',quantity:2}],adaptCatalog(snapshot,approvals),10,{type:'fixed',value:1000});
+ assert.deepEqual([r.base,r.discountCents,r.taxableBase,r.tax,r.total],[6000,1000,5000,500,5500]);
+});
+test('descuentos inválidos rechazados',()=>{
+ const c=adaptCatalog(snapshot,approvals);
+ for(const d of [{type:'percent',value:101},{type:'percent',value:-1},{type:'fixed',value:6001},{type:'fixed',value:4.5},{type:'inventado',value:5}])
+  assert.throws(()=>estimate([{id:'a',quantity:2}],c,21,d));
+});
