@@ -45,3 +45,14 @@ Incluir estos requisitos en el historial desde el origen; contrastar implementac
 - En la web pública, el cliente podrá solicitar valoración o presupuesto por correo o WhatsApp; las cifras de seguimiento, los documentos y los datos personales de clientes solo se verán en el entorno privado y autenticado de José, no en páginas abiertas.
 
 **Estado real:** estos son requisitos acordados, NO funciones certificadas en esta sesión. Queda pendiente inspeccionar la implementación de Flutter y la maqueta web, ejecutar pruebas completas de ambos canales y verificar qué eventos de seguimiento están técnicamente disponibles.
+
+## Informe hablado de presupuestos — requisito específico confirmado 28/11/2026
+- José puede preguntar de forma natural por voz: «JJ, ¿cómo vamos de presupuestos?», «¿Cuántos se han aceptado?», «¿Cuántos se han rechazado?» y «¿Cuántos quedan pendientes?».
+- JJ consulta los **documentos reales guardados**, computa el número de presupuestos **aceptados, rechazados y pendientes** y la **suma en euros de los importes de cada categoría**, y **responde automáticamente en voz alta**, no solo con una pantalla o tabla.
+- Ejemplo **ficticio, jamás mostrarlo como información real**: «Tienes cinco presupuestos aceptados por 20.000 euros, tres rechazados por 5.000 euros y dos pendientes por 2 euros en total».
+- Permitir «este mes», «esta semana», «este año» o «desde siempre»; si no indica periodo, usar un periodo predeterminado claramente declarado o pedirlo si es imprescindible. Mostrar además los mismos datos en una vista resumida opcional, sin que sustituya a la respuesta de voz.
+- Evitar duplicados, contar cada presupuesto una vez conforme a su estado actual y asegurar que una conversión a factura no se cuente como presupuesto nuevo. Definir explícitamente si se suman importes con IVA o sin IVA; por defecto explicar la base usada y permitir consulta alternativa. No mezclar presupuestos con facturas ni importes cobrados con aceptados.
+- Si falta una fecha, estado o importe válido, señalarlo y no inventar ni atribuir cifras de prueba. Respetar acceso privado/autenticación y privacidad de datos.
+- **La función se solicita para el JJ de gestión de la aplicación**, no para revelar información empresarial en el asistente público de la web. La integración futura solo podrá utilizar datos privados con autenticación y permisos explícitos.
+- Pruebas necesarias: conjunto simulado de 5 aceptados (20.000 €), 3 rechazados (5.000 €) y 2 pendientes (1 € cada uno): respuesta oral esperada **5, 3, 2; 20.000 €, 5.000 €, 2 €**, respectivamente. Luego validar con datos reales en Android, voz, filtros temporales y cambios de estado.
+- Estado: **acordado y registrado, no verificado como implementado**.
